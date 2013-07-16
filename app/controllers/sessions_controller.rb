@@ -4,19 +4,26 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_name(params[:session][:name])
-    if current_user = user.authenticate(params[:session][:password])
-      current_user.token = SecureRandom.urlsafe_base64(10)
-      session[:token] = current_user.token
-      redirect_to user_url(current_user)
+    if user
+      if user.authenticate(params[:session][:password])
+        user.token = SecureRandom.urlsafe_base64(10)
+        user.update_attributes(password: params[:session][:password],
+                            password_confirmation: params[:session][:password])
+        user.save
+        session[:token] = user.token
+        redirect_to user_url(user)
+      else
+        render :new
+      end
     else
       render :new
     end
   end
 
   def destroy
-    current_user.token = nil
+    @current_user = nil
     session[:token] = nil
-    redirect_to :new
+    render :new
   end
 
 end

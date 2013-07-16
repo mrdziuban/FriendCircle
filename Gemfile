@@ -37,3 +37,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 gem 'bcrypt-ruby', '3.0.1'
+
+group :development do
+  gem "better_errors"
+end
