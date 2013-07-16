@@ -3,11 +3,11 @@
 <head>
   <title>FriendCircle</title>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "bootapplication", :media => "all" %>
 </head>
 <body>
-<%= @current_user.name if @current_user %>
+<%= "You are logged in as " + @current_user.name if @current_user %>
 <br>
-<%= params.inspect %>
 <%= yield %>
 <br>
 <br>
