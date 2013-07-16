@@ -1,6 +1,11 @@
 FriendCircle::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    member do
+      get "feed"
+    end
+  end
+
   resource :sessions, only: ["new","create", "destroy"]
   resources :fcs
   resources :posts

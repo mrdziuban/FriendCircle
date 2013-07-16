@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    params[:post][:user_id] = @current_user.id
     @post = Post.new(params[:post])
     if @post.save
       redirect_to post_url(@post)

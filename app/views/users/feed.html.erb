@@ -1,0 +1,15 @@
+<h2> <%= @user.name %>'s Feed </h2>
+
+<% @user.fcms.pluck("fc_id").each do |fc| %>
+  <% PostShare.find_all_by_fc_id(fc).each do |postshare| %>
+    <ul>
+      <li><%= postshare.post.body %> by <%= postshare.post.user.name %>
+        <% postshare.post.links.each do |link| %>
+          <li style="padding-left:10px"><%= link_to link.url, link.url %></li>
+        <% end %>
+      </li>
+      </ul>
+  <% end %>
+<% end %>
+
+<%= link_to "Profile", user_url(@user) %>

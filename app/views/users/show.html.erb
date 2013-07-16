@@ -9,6 +9,10 @@
 </ul>
 
 <br>
-<%= link_to "Create friend circle", new_fc_url %>
-<br>
-<%= link_to "New post", new_post_url %>
+<% if @current_user.id == @user.id %>
+  <%= link_to "Create friend circle", new_fc_url %>
+  <br>
+  <%= link_to "Feed", feed_user_url(@user) %>
+  <br>
+  <%= link_to "New post", new_post_url %>
+<% end %>

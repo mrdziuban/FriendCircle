@@ -36,4 +36,11 @@ class UsersController < ApplicationController
   def destroy
 
   end
+
+  def feed
+    @user = User.find(params[:id])
+    if @current_user.id != @user.id
+      redirect_to user_url(@current_user)
+    end
+  end
 end
