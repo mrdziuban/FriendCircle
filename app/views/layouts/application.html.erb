@@ -8,7 +8,9 @@
 
 <%= params.inspect %>
 <%= yield %>
-
+<br>
+<br>
+<br>
 <% if @current_user %>
   <%= button_to "Sign Out", sessions_url, method: :delete %>
 <% end %>

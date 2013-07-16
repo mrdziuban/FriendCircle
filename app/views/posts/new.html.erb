@@ -1,0 +1,26 @@
+<h2> New Post </h2>
+
+
+<form action="<%= posts_url %>" method="post">
+  <label for="post_body">Body</label>
+  <input type="text" id="post_body" name="post[body]">
+  <br>
+  <% @current_user.fcs.each do |fc| %>
+    <input type="checkbox" id="post_<%= fc.name %>" name="post[fc_ids][]" value="<%= fc.id %>">
+    <label for="post_<%= fc.name %>"><%= fc.name %></label>
+    <br>
+  <% end %>
+  <input type="hidden" name="post[fc_ids][]" value="">
+
+  <label for="post_link_0_url">URL</label>
+  <input type="text" name="post[links_attributes][0][url]" id="post_link_0_url">
+  <br>
+  <label for="post_link_1_url">URL</label>
+  <input type="text" name="post[links_attributes][1][url]" id="post_link_1_url">
+  <br>
+  <label for="post_link_2_url">URL</label>
+  <input type="text" name="post[links_attributes][2][url]" id="post_link_2_url">
+  <br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="New Post">
+</form>

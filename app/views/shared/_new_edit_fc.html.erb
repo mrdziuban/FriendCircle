@@ -1,0 +1,23 @@
+<h4><%= action.capitalize %> friend circle</h4>
+<%= form_for :fc, url: url do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <input type="hidden" name="fc[user_id]" value="<%= user.id %>">
+  <br>
+  <br>
+  <label for="user_ids">Friends</label>
+  <br>
+  <% users.each do |u| %>
+    <label for="user_<%= u.name %>"><%= u.name %></label>
+    <input type="checkbox" id="user_<%= u.name %>" name="fc[user_ids][]" value="<%= u.id %>" <%= "checked" if fc.fcms.pluck("user_id").include?(u.id) %>>
+    <br>
+  <% end %>
+  <input type="hidden" name="fc[user_ids][]" value="">
+
+  <% if action == "edit" %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <%= f.submit(action.capitalize) %>
+  <br>
+<% end %>

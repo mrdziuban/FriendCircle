@@ -1,0 +1,15 @@
+<h2><%= @post.body %></h2>
+
+<h4>Links</h4>
+<ul>
+  <% @post.links.each do |link| %>
+    <li><%= link_to link.url, link.url %></li>
+  <% end %>
+</ul>
+
+<h4>Shared with:</h4>
+<ul>
+  <% @post.post_shares.each do |ps| %>
+    <li><%= ps.fc.name %></li>
+  <% end %>
+</ul>

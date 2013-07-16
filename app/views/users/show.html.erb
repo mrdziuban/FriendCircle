@@ -1,27 +1,14 @@
 <h2><%= @user.name %></h2>
 <br>
-<br>
 
+<h4>Friend circles</h4>
+<ul>
 <% @user.fcs.each do |fc| %>
-  <%= link_to fc.name, fc_url(fc) %>
-  <br>
+  <li><%= link_to fc.name, fc_url(fc) %></li>
 <% end %>
+</ul>
 
-<h4>Create friend circle</h4>
-<%= form_for :fc, url: fcs_url do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <input type="hidden" name="fc[user_id]" value="<%= @user.id %>">
-  <br>
-  <br>
-  <label for="user_ids">Friends</label>
-  <br>
-  <% @users.each do |user| %>
-    <label for="user_<%= user.name %>"><%= user.name %></label>
-    <input type="checkbox" id="user_<%= user.name %>" name="fc[user_ids][]" value="<%= user.id %>">
-    <br>
-  <% end %>
-  <input type="hidden" name="fc[user_ids][]" value="">
-  <%= f.submit("Create") %>
-  <br>
-<% end %>
+<br>
+<%= link_to "Create friend circle", new_fc_url %>
+<br>
+<%= link_to "New post", new_post_url %>
