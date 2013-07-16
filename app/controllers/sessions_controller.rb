@@ -7,8 +7,6 @@ class SessionsController < ApplicationController
     if user
       if user.authenticate(params[:session][:password])
         user.token = SecureRandom.urlsafe_base64(10)
-        user.update_attributes(password: params[:session][:password],
-                            password_confirmation: params[:session][:password])
         user.save
         session[:token] = user.token
         redirect_to user_url(user)

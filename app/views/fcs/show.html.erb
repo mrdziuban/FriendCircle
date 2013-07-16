@@ -1,0 +1,8 @@
+<h2><%= @fc.name %></h2>
+
+<h4>Members</h4>
+<ul>
+  <% @fc.fcms.each do |fcm| %>
+    <li><%= fcm.user.name %></li>
+  <% end %>
+</ul>
