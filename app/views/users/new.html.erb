@@ -1,11 +1,34 @@
 <h2>Sign Up</h2>
 
-<%= form_for @user do |f| %>
-  Name: <%= f.text_field :name %>
+<form action="<%= users_url %>" method="post">
+  <label for="user_name">Name</label>
+  <input type="text" id="user_name" name="user[name]">
   <br>
-  Password: <%= f.password_field :password %>
+  <label for="password">Password</label>
+  <input type="password" id="user_password" name="user[password]">
   <br>
-  Password confirmation: <%= f.password_field :password_confirmation %>
+  <label for="user_password_confirmation">Password Confirmation</label>
+  <input type="password" id="user_password_confirmation" name="user[password_confirmation]">
   <br>
-  <%= f.submit %>
-<% end %>
+
+  <br>
+  <br>
+  Create Post
+  <br>
+  <label for="user_post_body">Body</label>
+  <input type="text" id="user_post_body" name="user[posts_attributes][0][body]">
+  <br>
+
+  <label for="user_post_link_0_url">URL</label>
+  <input type="text" name="user[posts_attributes][0][links_attributes][0][url]" id="user_post_link_0_url">
+  <br>
+  <label for="user_post_link_1_url">URL</label>
+  <input type="text" name="user[posts_attributes][0][links_attributes][1][url]" id="user_post_link_1_url">
+  <br>
+  <label for="user_post_link_2_url">URL</label>
+  <input type="text" name="user[posts_attributes][0][links_attributes][2][url]" id="user_post_link_2_url">
+  <br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="Create User and Post">
+</form>

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       @user.token = SecureRandom.urlsafe_base64(10)
+      @user.save
       session[:token] = @user.token
       redirect_to user_url(@user)
     else

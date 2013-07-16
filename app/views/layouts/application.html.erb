@@ -5,7 +5,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= @current_user.name if @current_user %>
+<br>
 <%= params.inspect %>
 <%= yield %>
 <br>

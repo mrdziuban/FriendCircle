@@ -1,6 +1,7 @@
 FriendCircle::Application.routes.draw do
 
   resources :users do
+    resources :posts, only: [:index]
     member do
       get "feed"
     end
@@ -8,7 +9,8 @@ FriendCircle::Application.routes.draw do
 
   resource :sessions, only: ["new","create", "destroy"]
   resources :fcs
-  resources :posts
+  resources :posts, except: [:index]
+  root to: "sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -15,4 +15,6 @@
   <%= link_to "Feed", feed_user_url(@user) %>
   <br>
   <%= link_to "New post", new_post_url %>
+  <br>
+  <%= link_to "Posts", user_posts_url(@user.id) %>
 <% end %>
