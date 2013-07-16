@@ -11,15 +11,12 @@
   <% end %>
   <input type="hidden" name="post[fc_ids][]" value="">
 
+  <% 3.times do |i| %>
   <label for="post_link_0_url">URL</label>
-  <input type="text" name="post[links_attributes][0][url]" id="post_link_0_url">
+  <input type="url" name="post[links_attributes][<%= i %>][url]" id="post_link_<%= i %>_url">
   <br>
-  <label for="post_link_1_url">URL</label>
-  <input type="text" name="post[links_attributes][1][url]" id="post_link_1_url">
-  <br>
-  <label for="post_link_2_url">URL</label>
-  <input type="text" name="post[links_attributes][2][url]" id="post_link_2_url">
-  <br>
+  <% end %>
+
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="submit" value="New Post">
 </form>

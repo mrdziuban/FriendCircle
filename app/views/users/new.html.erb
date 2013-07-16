@@ -19,15 +19,12 @@
   <input type="text" id="user_post_body" name="user[posts_attributes][0][body]">
   <br>
 
-  <label for="user_post_link_0_url">URL</label>
-  <input type="text" name="user[posts_attributes][0][links_attributes][0][url]" id="user_post_link_0_url">
+  <% 3.times do |i| %>
+  <label for="user_post_link_<%= i %>_url">URL</label>
+  <input type="url" name="user[posts_attributes][0][links_attributes][<%= i %>][url]" id="user_post_link_<%= i %>_url">
   <br>
-  <label for="user_post_link_1_url">URL</label>
-  <input type="text" name="user[posts_attributes][0][links_attributes][1][url]" id="user_post_link_1_url">
-  <br>
-  <label for="user_post_link_2_url">URL</label>
-  <input type="text" name="user[posts_attributes][0][links_attributes][2][url]" id="user_post_link_2_url">
-  <br>
+  <% end %>
+
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input type="submit" value="Create User and Post">
